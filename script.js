@@ -48,8 +48,33 @@ buttonDouble.onclick = function() {
 };
 
 // Button to Shuffle Cards
+buttonShuffle.onclick = function() {
+shuffle(cards) ;
+    console.log("Im shuffling the cards");
+game.innerHTML = "";
 
-
+    for (let card of cards) {
+            game.insertAdjacentHTML("beforeend",
+                "<div style='background-image: url(" + url + card + ")' class='card'>"
+            );
+        
+    }
+};
+function shuffle(array) {
+    let currentIndex = array.length,
+        randomIndex;
+    // While there are elements to shuffle...
+    while (currentIndex > 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex = currentIndex - 1;
+        // Swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
+    return array;
+}
 // Button to Flip All Cards
 
 
