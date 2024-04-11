@@ -49,17 +49,20 @@ buttonDouble.onclick = function() {
 
 // Button to Shuffle Cards
 buttonShuffle.onclick = function() {
-shuffle(cards) ;
+    shuffle(cards);
+    
     console.log("Im shuffling the cards");
-game.innerHTML = "";
+    
+    let count = 0;
 
     for (let card of cards) {
-            game.insertAdjacentHTML("beforeend",
-                "<div style='background-image: url(" + url + card + ")' class='card'>"
-            );
-        
+        game.insertAdjacentHTML("beforeend",
+            "<div style='background-image: url(" + url + card +  ")' id='"+ count + "' class='card'>"
+        );
+count = count + 1;
     }
 };
+
 function shuffle(array) {
     let currentIndex = array.length,
         randomIndex;
@@ -73,10 +76,25 @@ function shuffle(array) {
             array[randomIndex], array[currentIndex]
         ];
     }
+    game.innerHTML = "";
     return array;
+
 }
 // Button to Flip All Cards
+buttonFlip.onclick = function() {
+    for ( i = 0; i < 17; i++) {
+        document.getElementById(i).style.backgroundImage = "";
+        count = count + 1;
+        console.log(count);
 
+
+
+        
+    }
+
+
+
+};
 
 // Here we need a function for clicking on individual cards.
 // (It won't work until we finish writing it.)
