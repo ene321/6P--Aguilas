@@ -50,16 +50,15 @@ buttonDouble.onclick = function() {
 // Button to Shuffle Cards
 buttonShuffle.onclick = function() {
     shuffle(cards);
-    
+game.innerHTML = "";
     console.log("Im shuffling the cards");
-    
-    let count = 0;
+ let count = 0;
 
     for (let card of cards) {
         game.insertAdjacentHTML("beforeend",
-            "<div style='background-image: url(" + url + card +  ")' id='"+ count + "' class='card'>"
+            "<div style='background-image: url(" + url + card + ")' id='" + count + "' class='card'>"
         );
-count = count + 1;
+        count = count + 1;
     }
 };
 
@@ -76,20 +75,23 @@ function shuffle(array) {
             array[randomIndex], array[currentIndex]
         ];
     }
-    game.innerHTML = "";
+    
     return array;
 
 }
+
+game.innerHTML = "";
 // Button to Flip All Cards
 buttonFlip.onclick = function() {
-    for ( i = 0; i < 17; i++) {
-        document.getElementById(i).style.backgroundImage = "";
+    let count = 0;
+    for (let card of cards) {
+        document.getElementById(count).style.backgroundImage = "";
         count = count + 1;
         console.log(count);
 
 
 
-        
+
     }
 
 
