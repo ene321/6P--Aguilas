@@ -5,6 +5,7 @@ let buttonShow = document.querySelector(".show");
 let buttonDouble = document.querySelector(".double");
 let buttonShuffle = document.querySelector(".shuffle");
 let buttonFlip = document.querySelector(".flip");
+let clickedIds = [];
 // Array containing image URLs
 let url = "https://cdn.glitch.global/07ed4b0c-ffa4-414c-aaf9-8609296a6624/";
 let cards = [
@@ -50,9 +51,9 @@ buttonDouble.onclick = function() {
 // Button to Shuffle Cards
 buttonShuffle.onclick = function() {
     shuffle(cards);
-game.innerHTML = "";
+    game.innerHTML = "";
     console.log("Im shuffling the cards");
- let count = 0;
+    let count = 0;
 
     for (let card of cards) {
         game.insertAdjacentHTML("beforeend",
@@ -75,7 +76,7 @@ function shuffle(array) {
             array[randomIndex], array[currentIndex]
         ];
     }
-    
+
     return array;
 
 }
@@ -92,6 +93,7 @@ buttonFlip.onclick = function() {
 
 
 
+
     }
 
 
@@ -102,5 +104,33 @@ buttonFlip.onclick = function() {
 // (It won't work until we finish writing it.)
 $(document).click(function(event) {
     // Get the id property of the clicked thing.
+
     let clickedId = event.target.id;
+    console.log(clickedId);
+    if (clickedId !== "") {
+        document.getElementById(clickedId).style.backgroundImage = "url('" + url + cards[clickedId] + "')";
+        clickedIds.push(clickedId);
+        console.log(clickedIds);
+        if (clickedIds.length === 2) {
+            let card1picture = document.getElementById(clickedIds[0]).style.backgroundImage;
+            let card2picture = document.getElementById(clickedIds[1]).style.backgroundImage;
+            console.log(card1picture);
+            console.log(card2picture);
+            if (card1picture === card2picture) {
+                console.log("match");
+                document.getElementById(clickedIds[0]).id = "";
+                document.getElementById(clickedIds[1]).id = "";
+                clickedIds = [];
+                console.log(clickedIds);
+            }
+        } else if (clickedIds.length > 2) {
+            document.getElementById(clickedIds[0]).style.backgroundImage = "";
+            document.getElementById(clickedIds[1]).style.backgroundImage = "";
+            clickedIds = [];
+            clickedIds.push(clickedId);
+            console.log(clickedIds);
+        }
+    }
+
+
 });
