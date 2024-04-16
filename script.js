@@ -30,6 +30,8 @@ buttonShow.onclick = function() {
             "<div style='background-image: url(" + url +
             card +
             ")' class='card'>");
+        let audio = document.querySelector(".audio");
+    audio.play();
     }
 };
 
@@ -41,11 +43,14 @@ buttonDouble.onclick = function() {
             cards.push(card);
             game.insertAdjacentHTML("beforeend",
                 "<div style='background-image: url(" + url + card + ")' class='card'>"
+                                    
             );
+            
         }
     }
 
-
+let audio = document.querySelector(".audio");
+    audio.play();
 };
 
 // Button to Shuffle Cards
@@ -75,9 +80,12 @@ function shuffle(array) {
         [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]
         ];
+        let audio = document.querySelector(".audio");
+    audio.play();
     }
 
     return array;
+    
 
 }
 
@@ -91,7 +99,8 @@ buttonFlip.onclick = function() {
         console.log(count);
 
 
-
+let audio = document.querySelector(".audio");
+    audio.play();
 
 
     }
@@ -99,6 +108,7 @@ buttonFlip.onclick = function() {
 
 
 };
+
 
 // Here we need a function for clicking on individual cards.
 // (It won't work until we finish writing it.)
@@ -129,7 +139,9 @@ $(document).click(function(event) {
             clickedIds = [];
             clickedIds.push(clickedId);
             console.log(clickedIds);
+          
         }
+       
     }
 
 
